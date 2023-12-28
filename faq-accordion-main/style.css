@@ -1,0 +1,229 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&display=swap');
+/***
+    The new CSS reset - version 1.8.5 (last updated 14.6.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+    all: revert;
+}
+
+
+
+/* Custom Properties */
+
+:root {
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-pink: hsl(275, 100%, 97%);
+    --clr-grey: hsl(292, 16%, 49%);
+    --clr-purp: hsl(292, 42%, 14%);
+
+    --ff-main: 'Work Sans', sans-serif;
+
+    --fw-normal: 400;
+    --fw-bold: 600;
+    --fw-xbold: 700;
+
+    --fs-sml: 1.7rem;
+    --fs-med: 1.8rem;
+    --fs-lrg: 5rem;
+}
+
+
+
+/* Typography */
+
+html {
+    font-size: 62.5%;
+    font-family: var(--ff-main);
+    color: var(--clr-purp)
+}
+
+h1 {
+    font-size: var(--fs-lrg);
+    font-weight: var(--fw-xbold);
+}
+
+h2 {
+    font-size: var(--fs-med);
+    font-weight: var(--fw-bold);
+}
+
+h2:hover {
+    color: hsl(280, 66%, 45%);
+    cursor: pointer;
+}
+
+p,
+span {
+    font-size: var(--fs-sml);
+    font-weight: var(--fw-normal);
+    color: var(--clr-grey);
+}
+
+
+
+/* General */
+
+body {
+    background-image: url(assets/images/background-pattern-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--clr-pink);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: white;
+    width: 30%;
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
+}
+
+.questions {
+    height: calc(100% - 4rem);
+}
+
+h1,
+h2 {
+    display: flex;
+    align-items: center;
+}
+
+h1 img {
+    padding-right: 2rem;
+}
+
+h2 {
+    justify-content: space-between;
+}
+
+li + li {
+    border-top: 1px solid var(--clr-pink);
+}
+
+li {
+    padding: 2rem 0;
+}
+
+p {
+    display: none;
+}
+
+img {
+    min-width: 3.1rem;
+}
+
+
+/* Media Query */
+
+@media (max-width: 375px) {
+    body {
+        background-image: url(assets/images/background-pattern-mobile.svg);
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    li > p {
+        padding-top: 2rem;
+    }
+}

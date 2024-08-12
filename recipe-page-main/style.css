@@ -1,0 +1,291 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap');
+
+
+/***
+    The new CSS reset - version 1.8.5 (last updated 14.6.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+ *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+    all: revert;
+}
+
+
+
+/* Custom Properties */
+
+:root {
+    /* Colors */
+    --clr-white: hsl(0, 0%, 100%);
+
+    --clr-stone-100: hsl(30, 54%, 90%);
+    --clr-stone-150: hsl(30, 18%, 87%);
+    --clr-stone-600: hsl(30, 10%, 34%);
+    --clr-stone-900: hsl(24, 5%, 18%);
+
+    --clr-brown-800: hsl(14, 45%, 36%);
+
+    --clr-rose-800: hsl(332, 51%, 32%);
+    --clr-rose-50: hsl(330, 100%, 98%);
+
+    /* Fonts */
+    --ff-main: "Outfit", sans-serif;
+    --ff-alt: "Young Serif", system-ui;
+
+    --fw-normal: 400;
+    --fw-bold: 600;
+    --fw-xbold: 900;
+
+    --fs-small: 2rem;
+    --fs-medium: 2.4rem;
+    --fs-large: 3rem;
+    --fs-xlarge: 4rem;
+}
+
+
+
+/* Typography */
+
+html {
+    font-size: 62.5%;
+    font-family: var(--ff-main);
+    color: var(--clr-stone-600);
+}
+
+h1, h2 {
+    font-family: var(--ff-alt);
+}
+
+h3, span {
+    font-weight: var(--fw-bold);
+    color: var(--clr-stone-900);
+}
+
+h1 {
+    font-weight: var(--fw-xbold);
+    font-size: var(--fs-xlarge);
+    color: var(--clr-stone-900);
+}
+
+h2 {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-large);
+    color: var(--clr-brown-800);
+}
+
+h3 {
+    font-size: var(--fs-medium);
+    font-weight: var(--fw-bold);
+    color: var(--clr-rose-800);
+}
+
+p {
+    font-size: var(--fs-small);
+}
+
+.preperation li,
+.ingredients li,
+.instructions li {
+    list-style-type: disc;
+    list-style-position: outside;
+}
+
+.instructions li {
+    list-style: decimal;
+    font-size: var(--fs-small);
+}
+
+.instructions li::marker {
+    color: var(--clr-brown-800);
+    font-weight: var(--fw-bold);
+}
+
+.nutrition p + p {
+    color: var(--clr-brown-800);
+    font-weight: var(--fw-bold);
+}
+
+
+
+/* Layout Styling */
+
+html {
+    background: var(--clr-stone-100);
+}
+
+.container {
+    width: 50vw;
+    background: var(--clr-white);
+    margin: 10rem auto;
+    padding: 5rem;
+    border-radius: 2.5rem;
+}
+
+.container > * {
+    padding: 2.5rem 0;
+}
+
+img {
+    border-radius: 1rem;
+}
+
+h1,
+h2 {
+    margin-bottom: 1rem;
+}
+
+.preperation {
+    background-color: var(--clr-rose-50);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+}
+
+.preperation h3 {
+    margin-bottom: 1rem;
+}
+
+.preperation li,
+.ingredients li,
+.instructions li {
+    padding-left: 1.75rem;
+    margin-left: 1.75rem;
+}
+
+.preperation li + li,
+.ingredients li + li,
+.instructions li + li {
+    margin-top: 1rem;
+}
+
+.ingredients,
+.instructions {
+    border-bottom: 1px solid var(--clr-stone-150);
+}
+
+.nutrition li{
+    display: flex;
+    width: 100%;
+    padding: 1rem 2.5rem;
+    margin-top: 1rem;
+}
+
+.nutrition li p {
+    width: 50%;
+}
+
+.nutrition li + li {
+    border-top: 1px solid var(--clr-stone-150);
+}
+
+
+
+/* Media Queries */
+
+@media (max-width:800px){
+    :root {
+        --fs-small: 1.2rem;
+        --fs-medium: 1.6rem;
+        --fs-large: 2rem;
+        --fs-xlarge: 2.4rem;
+    }
+
+    .container {
+        width: 100vw;
+        margin: 0;
+        border-radius: 0;
+        padding: 2.5rem;
+    }
+}

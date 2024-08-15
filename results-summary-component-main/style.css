@@ -1,0 +1,334 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
+/***
+    The new CSS reset - version 1.8.5 (last updated 14.6.2023)
+    GitHub page: https://github.com/elad2412/the-new-css-reset
+***/
+
+/*
+    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+    - The "symbol *" part is to solve Firefox SVG sprite bug
+    - The "html" attribute is exclud, because otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+ */
+ *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+    all: unset;
+    display: revert;
+}
+
+/* Preferred box-sizing value */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Reapply the pointer cursor for anchor tags */
+a, button {
+    cursor: revert;
+}
+
+/* Remove list styles (bullets/numbers) */
+ol, ul, menu {
+    list-style: none;
+}
+
+/* For images to not be able to exceed their container */
+img {
+    max-inline-size: 100%;
+    max-block-size: 100%;
+}
+
+/* removes spacing between cells in tables */
+table {
+    border-collapse: collapse;
+}
+
+/* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
+input, textarea {
+    -webkit-user-select: auto;
+}
+
+/* revert the 'white-space' property for textarea elements on Safari */
+textarea {
+    white-space: revert;
+}
+
+/* minimum style to allow to style meter element */
+meter {
+    -webkit-appearance: revert;
+    appearance: revert;
+}
+
+/* preformatted text - use only for this feature */
+:where(pre) {
+    all: revert;
+}
+
+/* reset default text opacity of input placeholder */
+::placeholder {
+    color: unset;
+}
+
+/* remove default dot (•) sign */
+::marker {
+    content: initial;
+}
+
+/* fix the feature of 'hidden' attribute.
+   display:revert; revert to element instead of attribute */
+:where([hidden]) {
+    display: none;
+}
+
+/* revert for bug in Chromium browsers
+   - fix for the content editable attribute will work properly.
+   - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element */
+:where([contenteditable]:not([contenteditable="false"])) {
+    -moz-user-modify: read-write;
+    -webkit-user-modify: read-write;
+    overflow-wrap: break-word;
+    -webkit-line-break: after-white-space;
+    -webkit-user-select: auto;
+}
+
+/* apply back the draggable feature - exist only in Chromium and Safari */
+:where([draggable="true"]) {
+    -webkit-user-drag: element;
+}
+
+/* Revert Modal native behavior */
+:where(dialog:modal) {
+    all: revert;
+}
+
+
+
+/* Custom Properties */
+
+:root {
+    /* Colors */
+
+    /* Primary */
+    --clr-light-red: hsl(0, 100%, 67%);
+    --clr-light-red-25: hsla(0, 100%, 67%, 0.05);
+    --clr-orange-yellow: hsl(39, 100%, 56%);
+    --clr-orange-yellow-25: hsl(39, 100%, 56%, 0.05);
+    --clr-green-teal: hsl(166, 100%, 37%);
+    --clr-green-teal-25: hsl(166, 100%, 37%, 0.05);
+    --clr-cobalt-blue: hsl(234, 85%, 45%);
+    --clr-cobalt-blue-25: hsl(234, 85%, 45%, 0.05);
+    /* Gradient background */
+    --clr-slate-blue: hsl(252, 100%, 67%);
+    --clr-royal-blue: hsl(241, 81%, 54%);
+    /* Gradient circle*/
+    --clr-violet-blue: hsla(256, 72%, 46%, 1);
+    --clr-persian-blue: hsla(241, 72%, 46%, 0);
+    /* Neutral */
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-pale-blue: hsl(221, 100%, 96%);
+    --clr-light-lavender: hsl(241, 100%, 89%);
+    --clr-dark-grey: hsl(224, 30%, 27%);
+
+    /* Fonts */
+
+    --ff-main: "Hanken Grotesk", system-ui;
+    
+    --fw-normal: 500;
+    --fw-bold: 700;
+    --fw-xbold: 800;
+
+    --fs-small: 1.6rem;
+    --fs-medium: 1.8rem;
+    --fs-large: 2.4rem;
+    --fs-xlarge: 4rem;
+}
+
+
+
+/* Typography */
+
+html {
+    font-size: 62.5%;
+    font-family: var(--ff-main);
+}
+
+h1,
+h2 {
+    font-size: var(--fs-medium);
+}
+
+h2 { font-weight: var(--fw-bold); }
+
+span,
+li,
+button,
+p {
+    font-size: var(--fs-small);
+}
+
+.result > span:first-of-type {
+    font-size: var(--fs-xlarge);
+    color: var(--clr-white);
+    font-weight: var(--fw-xbold);
+}
+
+.result + span {
+    font-weight: var(--fw-bold);
+    font-size: var(--fs-large);
+    color: var(--clr-white);
+}
+
+h1,
+.result > span + span,
+.your-result p,
+.summary span + span {
+    color: var(--clr-light-lavender);
+}
+
+.score {
+    color: var(--clr-dark-grey);
+    font-weight: var(--fw-bold);
+}
+
+button {
+    color: white;
+    font-weight: var(--fw-bold);
+}
+
+
+
+/* Layout */
+
+body {
+    background-color: var(--clr-pale-blue);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.result-card {
+    background-color: var(--clr-white);
+    width: 60rem;
+    display: flex;
+    border-radius: 2rem;
+    box-shadow: 9px 10px 31px 8px rgba(0,0,0,0.1);
+}
+
+.your-result {
+    background: radial-gradient(var(--clr-slate-blue), var(--clr-royal-blue));
+    border-radius: 2rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    padding: 4rem;
+}
+
+h1 {
+    margin-bottom: 3rem;
+}
+
+.result {
+    width: 14rem;
+    height: 14rem;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(var(--clr-violet-blue), var(--clr-persian-blue));
+    margin-bottom: 3rem;
+}
+
+.result + span {
+    margin-bottom: 2rem;
+}
+
+.summary {
+    padding: 4rem;
+    width: 50%;
+}
+
+.summary h2 { margin-bottom: 3rem; }
+
+ul > li {
+    width: 100%;
+    padding: 1rem;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+ul > li > div {
+    display: flex;
+}
+
+ul div img { margin-right: .5rem; }
+
+ul > li + li {
+    margin-top: 1rem;
+}
+
+.score + span { margin-left: 1rem; }
+
+.reaction {
+    background-color: var(--clr-light-red-25);
+    color: var(--clr-light-red);
+}
+.memory {
+    background-color: var(--clr-orange-yellow-25);
+    color: var(--clr-orange-yellow);
+}
+.verbal {
+    background-color: var(--clr-green-teal-25);
+    color: var(--clr-green-teal);
+}
+.visual {
+    background-color: var(--clr-cobalt-blue-25);
+    color: var(--clr-cobalt-blue);
+}
+
+button {
+    background-color: var(--clr-dark-grey);
+    padding: 1.5rem;
+    width: 100%;
+    border-radius: 3rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+button:hover {
+    background-color: var(--clr-royal-blue);
+    cursor: pointer;
+}
+
+.attribution {
+    position: absolute;
+    bottom: 0;
+}
+
+
+
+/* Media Queries */
+
+@media (max-width:600px){
+    .result-card {
+        flex-direction: column;
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .summary,
+    .your-result {
+        width: 100%;
+    }
+
+    .your-result {
+        border-radius: 0 0 2rem 2rem;
+    }
+}

@@ -25,15 +25,15 @@
   /* Colors */
   --clr-white: #fff;
 
-  --clr-stone100: hsl(30, 54, 90);
-  --clr-stone150: hsl(30, 18, 87);
-  --clr-stone600: hsl(30, 10, 34);
-  --clr-stone900: hsl(24, 5, 18);
+  --clr-stone100: hsl(30 54% 90%);
+  --clr-stone150: hsl(30 18% 87%);
+  --clr-stone600: hsl(30 10% 34%);
+  --clr-stone900: hsl(24 5% 18%);
 
-  --clr-brown: hsl(14, 45, 36);
+  --clr-brown: hsl(14 45% 36%);
 
-  --clr-rose-dark: hsl(332, 51, 32);
-  --clr-light-rose: hsl(330, 100, 98);
+  --clr-rose-dark: hsl(332 51% 32%);
+  --clr-light-rose: hsl(330 100% 98%);
 
   /* Font */
 
@@ -44,10 +44,10 @@
   --fw-med: 600;
   --fw-heavy: 700;
 
-  --fs-small: 1.6rem;
-  --fs-med: 2rem;
+  --fs-small: 1.2rem;
+  --fs-med: 1.6rem;
   --fs-large: 2.4rem;
-  --fs-xlarge: 3.2rem;
+  --fs-xlarge: 2.8rem;
 }
 
 
@@ -56,13 +56,159 @@
 /* TYPOGRAPHY
 /*******************************************/
 
+html { font-family: var(--ff-main); }
+
+h1 {
+  color: var(--clr-stone900);
+  font-size: var(--fs-xlarge);
+}
+
+h1,
+h2 {
+  font-weight: var(--fw-heavy);
+  font-family: var(--ff-alt);
+}
+
+h2,
+h2 + ul li::marker,
+h2 + ol li::marker {
+  color: brown;
+}
+
+h2 { font-size: var(--fs-large); }
+
+h3, h3 + ul li::marker { color: var(--clr-rose-dark); }
+
+h3 {
+  margin-top: 0;
+  font-size: var(--fs-med);
+}
+
+p, li { color: var(--clr-stone600); }
+
+ul, ol { padding-left: 1.5rem; }
+
+li { padding-left: 1rem; }
+
+p, li { font-size: var(--fs-small); }
+
+li span,
+li span + span {
+  color: var(--clr-stone900);
+  font-weight: var(--fw-med);
+}
+
+.nutrition span:first-of-type {
+  font-weight: var(--fw-light);
+  color: var(--clr-stone600);
+}
+
+.nutrition span + span { color: var(--clr-brown); }
+
+.nutrition ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.nutrition li {
+  width: 100%;
+  padding: 1rem;
+}
+
+.nutrition li span {
+  width: 50%;
+  display: inline-block;
+}
+
+.nutrition li + li {
+  border-top: 1px solid var(--clr-stone150);
+}
+
 
 
 /******************************************
 /* LAYOUT
 /*******************************************/
 
+html,
+body {
+  width: 100%;
+}
+
+header > *,
+main {
+  padding: 0 1.5rem;
+}
+
+header img {
+  padding: 0;
+}
+
+header img {
+  width: 100%;
+}
+
+.preperation-time {
+  background-color: var(--clr-light-rose);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.instructions,
+.nutrition {
+  border-top: 1px solid var(--clr-stone150);
+}
+
+
 
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+
+
+@media (min-width: 1250px) {
+  :root {
+    --fs-small: 1.4rem;
+    --fs-med: 1.6rem;
+    --fs-large: 2.4rem;
+    --fs-xlarge: 3.4rem;
+  }
+
+  body {
+    background-color: var(--clr-stone100);
+    padding: 5rem;
+  }
+
+  main,
+  header {
+    background-color: var(--clr-white);
+    width: 45vw;
+    margin: 0 auto;
+  }
+
+  header {
+    padding: 3rem; 
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+  }
+
+  main {
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+    padding: 3rem;
+    padding-bottom: 1rem;
+  }
+
+  header * { padding: 0; }
+
+  header img {
+    border-radius: 1rem;
+  }
+
+  header p {
+    margin-bottom: 0;
+  }
+
+  li { padding: 0.5rem;}
+
+}

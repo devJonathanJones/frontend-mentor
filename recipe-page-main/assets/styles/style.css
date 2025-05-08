@@ -1,9 +1,9 @@
 /*
- * Project Name: !!! Project Name Here !!!
+ * Project Name: Recipe Page Main
  * File Name: style.css
  * Author: Jonathan Jones
- * Date: !!!DD/MM/YYYY!!!
- * Description: !!! Description Here !!!
+ * Date: 05.08.2025
+ * Description: Recipe page for a Frontend Mentor project
  */
 
 
@@ -19,6 +19,36 @@
 /******************************************
 /* CUSTOM PROPERTIES
 /*******************************************/
+
+
+:root {
+  /* Colors */
+  --clr-white: #fff;
+
+  --clr-stone100: hsl(30, 54, 90);
+  --clr-stone150: hsl(30, 18, 87);
+  --clr-stone600: hsl(30, 10, 34);
+  --clr-stone900: hsl(24, 5, 18);
+
+  --clr-brown: hsl(14, 45, 36);
+
+  --clr-rose-dark: hsl(332, 51, 32);
+  --clr-light-rose: hsl(330, 100, 98);
+
+  /* Font */
+
+  --ff-main: "Roboto", sans-serif;
+  --ff-alt: "Young Serif", serif;
+
+  --fw-light: 400;
+  --fw-med: 600;
+  --fw-heavy: 700;
+
+  --fs-small: 1.6rem;
+  --fs-med: 2rem;
+  --fs-large: 2.4rem;
+  --fs-xlarge: 3.2rem;
+}
 
 
 

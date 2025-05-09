@@ -1,24 +1,18 @@
-# My Awesome Project
-Write a short sentence or two about this project and what it does. Be sure to include a link and a screenshot (we're front end devs so we can actually see our work!).
-
-**Link to project:** http://recruiters-love-seeing-live-demos.com/
+# Simple Omelette Recipe
+Simple Frontend Mentor project. Just trying to freshen my memory of HTML and CSS after a bit of a break. I struggled at times to remember things but ultimately remembered pretty quickly. I'm happy with the result.
 
 ![alt tag](http://placecorgi.com/1200/650)
 
 ## How It's Made:
 
-**Tech used:** HTML, CSS, JavaScript, Framework of choice
+**Tech used:** HTML, CSS
 
-Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.
-
-## Optimizations
-*(optional)*
-
-You don't have to include this section but interviewers *love* that you can not only deliver a final product that looks great but also functions efficiently. Did you write something then refactor it later and the result was 5x faster than the original implementation? Did you cache your assets? Things that you write in this section are **GREAT** to bring up in interviews and you can use this section as reference when studying for technical interviews!
+This project was built with just HTML and CSS. Nothing too fancy, just a quick little project to start off with. 
 
 ## Lessons Learned:
 
-No matter what your experience level, being an engineer means continuously learning. Every time you build something you always have those *whoa this is awesome* or *wow I actually did it!* moments. This is where you should share those moments! Recruiters and interviewers love to see that you're self-aware and passionate about growing.
+I already knew just about everything that I could've possibly learned from this project. But I was reminded of a few things I had forgotten in my break,
+
 
 ## Examples:
 Take a look at these couple examples that I have in my own portfolio:
